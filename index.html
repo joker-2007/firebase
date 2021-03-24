@@ -42,10 +42,10 @@
 
     var email = $("email").val();var database = firebase.database();
     var password = $("password").val();
-	  var ref = database.ref('sample');
+	  var ref = database.ref('sample');var result = ref.push("sample");
 
     if(email != "" && password!=""){
-        var result = ref.push("sample");
+        
      }
     else{
         window.alert("sample");
