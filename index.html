@@ -2,15 +2,13 @@
 <html>
     <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="/__/firebase/8.3.1/firebase-app.js"></script>
-<script src="/__/firebase/8.3.1/firebase-analytics.js"></script>
-<script src="/__/firebase/init.js"></script>
+	     <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
- <link rel="stylesheet" href="Styles.css">
+ <link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<div class="poojit">
-		<form action="#">
+		<form action="#" id = "form">
 			<h1 class="Create">Create Account</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -18,13 +16,41 @@
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			
-			<input type="text" placeholder="Name" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<button class="up">Sign Up</button>
-			<a href="Signup.html">login</a>
+			<input type="text" class = "name" placeholder="Name" required/>
+			<input type="email" class = "email" placeholder="Email" required/>
+			<input type="password" class = "password" placeholder="Password" required/>
+            <button  class="up">Sign Up</button>
+            <a href = "secondary.html">login</a>
 		</form>
 	</div>
+	<script>
+	var firebaseConfig = {
+    apiKey: "AIzaSyBlIAlJVzeTcvdy-ohcpjOxog7IVOT-cuA",
+    authDomain: "skill-dev-chat-demo.firebaseapp.com",
+    databaseURL: "https://skill-dev-chat-demo-default-rtdb.firebaseio.com",
+    projectId: "skill-dev-chat-demo",
+    storageBucket: "skill-dev-chat-demo.appspot.com",
+    messagingSenderId: "684332738792",
+    appId: "1:684332738792:web:e69f7a4e6ea15e6a03415d",
+    measurementId: "G-T8CK5T490M"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+
+  $("login").click(function(){
+
+    var email = $("email").val();
+    var password = $("password").val();
+
+    if(email != "" && password!=""){
+        var result = firebase.auth().signInWithEmailAndPassword(email, password)
+     }
+    else{
+        window.alert("sample");
+    }
+  });
+  }</script>
 	<!-- <div class="poojit_sign_in">
 		<form action="#">
 			<h1>Sign in</h1>
@@ -47,7 +73,7 @@
 				<p>To keep connected with us please login with your personal info</p>
 				<button class="ghost" id="signIn">Sign In</button>
 			</div>
-			<!-- <div class="overlay-panel overlay-right">
+			 <div class="overlay-panel overlay-right">
 				<h1>Hello, poojit!</h1>
 				<p>Enter your personal details and start journey with us</p>
 				<button class="ghost" id="signUp">Sign Up</button>
