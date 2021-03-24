@@ -40,11 +40,12 @@
 
   $("login").click(function(){
 
-    var email = $("email").val();
+    var email = $("email").val();var database = firebase.database();
     var password = $("password").val();
+	  var ref = database.ref('sample');
 
     if(email != "" && password!=""){
-        var result = firebase.auth().signInWithEmailAndPassword(email, password)
+        var result = ref.push("sample");
      }
     else{
         window.alert("sample");
