@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+ <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="style.css">
+ <script src = "main.js"></script>
+</head>
+<body>
+<!-- <div class="container" id="container">
+	<div class="poojit">
+		<form action="#">
+			<h1 class="Create">Create Account</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			
+			<input type="text" placeholder="Name" />
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<button>Sign Up</button>
+		</form>
+	</div> -->
+	<div class="poojit_sign_in">
+		<form action="#">
+			<h1 class="sign">Sign in</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fa fa-envelope"></i></a>
+				<a href="#" class="social"><i class="fab fa-github"></i></a>
+			</div>
+			<input id = "email" type="email" placeholder="Email" required/>
+			<input id = "password" type="password" placeholder="Password" required/>
+			<a href="#" class="forgot">Forgot your password?</a>
+			<button class="in">Sign In</button>
+		</form>
+	</div>
+	<!-- <div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			 <div class="overlay-panel overlay-right">
+				<h1>Hello, poojit!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div> -->
+		</div>
+	</div>
+</div><script>
+var firebaseConfig = {
+    apiKey: "AIzaSyAfkmPXlhUVM_vORak76psZ2S-OM5niJ2E",
+    authDomain: "trap-joker.firebaseapp.com",
+    databaseURL: "https://trap-joker-default-rtdb.firebaseio.com",
+    projectId: "trap-joker",
+    storageBucket: "trap-joker.appspot.com",
+    messagingSenderId: "363198825874",
+    appId: "1:363198825874:web:c41c0c624817021096ed4b",
+    measurementId: "G-M4ST54S84C"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+var database = firebase.database().ref();
+
+// Get a reference to the recommendations object of your Firebase.
+// Note: this doesn't exist yet. But when we write to our Firebase using
+// this reference, it will create this object for us!
+var recommendations = database.child("logged_users");
+
+// Push our first recommendation to the end of the list and assign it a
+// unique ID automatically.
+//var submitRecommendation = function () {
+let BtnEle = document.querySelector(".in");
+
+  // Get input values from each of the form elements
+  
+BtnEle.addEventListener("click", () => {
+  let email = document.querySelector('#email').value;
+  let password = document.querySelector('#password').value;
+  // Push a new recommendation to the database using those values
+  recommendations.push({
+    "email": email,
+    "password": password
+  });
+});
+</script>
+</body>
+</html>
