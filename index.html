@@ -79,12 +79,13 @@ var recommendations = database.child("users");
 // unique ID automatically.
 //var submitRecommendation = function () {
 let BtnEle = document.querySelector(".up");
-	let name = document.querySelector('#name').value;
-  let email = document.querySelector('#email').value;
-  let password = document.querySelector('#password').value;
+
   // Get input values from each of the form elements
   
 BtnEle.addEventListener("click", () => {
+	let name = document.querySelector('#name').value;
+  let email = document.querySelector('#email').value;
+  let password = document.querySelector('#password').value;
   // Push a new recommendation to the database using those values
   recommendations.push({
     "name": name,
