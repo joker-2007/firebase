@@ -5,22 +5,20 @@
 <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="style.css">
- <script src = "main.js"></script>
 </head>
 <body>
 	<div class="poojit">
 		<form action="#" id = "form">
 			<h1 class="Create">Create Account</h1>
 			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+				<a href="#" class="social"><i class="fa fa-envelope"></i></a>
+				<a href="#" class="social"><i class="fab fa-github"></i></a>
 			</div>
 			
 			<input type="text" id = "name" placeholder="Name" required/>
 			<input type="email" id = "email" placeholder="Email" required/>
 			<input type="password" id = "password" placeholder="Password" required/>
-            <button  class="up" id = "login" >Sign Up</button>
+            <button  class="up" id = "login" onclick = "user()" >Sign Up</button>
             <a href = "login.html">login</a>
 		</form> 
 	</div>
@@ -53,21 +51,21 @@
 			</div> -->
 		</div>
 	</div>
-</div><script>
+</div>
+<button onclick = "auth()" class = "google">sign in with Google</button><script>
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyAfkmPXlhUVM_vORak76psZ2S-OM5niJ2E",
-  authDomain: "trap-joker.firebaseapp.com",
-  databaseURL: "https://trap-joker-default-rtdb.firebaseio.com",
-  projectId: "trap-joker",
-  storageBucket: "trap-joker.appspot.com",
-  messagingSenderId: "363198825874",
-  appId: "1:363198825874:web:c41c0c624817021096ed4b",
-  measurementId: "G-M4ST54S84C"
-};
+var firebaseConfig = {
+    apiKey: "AIzaSyCyo1XnrTLb0rTziCn8JGacC9KUJwnCVPk",
+    authDomain: "blogy-skill-cloud.firebaseapp.com",
+    databaseURL: "https://blogy-skill-cloud-default-rtdb.firebaseio.com",
+    projectId: "blogy-skill-cloud",
+    storageBucket: "blogy-skill-cloud.appspot.com",
+    messagingSenderId: "1051285052721",
+    appId: "1:1051285052721:web:b6388cc0823dd5ff49a410",
+    measurementId: "G-G88YG8WXE0"
+  };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-
 var database = firebase.database().ref();
 
 // Get a reference to the recommendations object of your Firebase.
@@ -83,7 +81,7 @@ let BtnEle = document.querySelector(".up");
   // Get input values from each of the form elements
   
 BtnEle.addEventListener("click", () => {
-	let name = document.querySelector('#name').value;
+	let  name = document.querySelector('#name').value;
   let email = document.querySelector('#email').value;
   let password = document.querySelector('#password').value;
   // Push a new recommendation to the database using those values
@@ -93,18 +91,48 @@ BtnEle.addEventListener("click", () => {
     "password": password
   });
 });
+</script><script>
+ let  click = document.querySelector(".google");
+     function auth() {      
+     // Google provider object is created here.
+     click.addEventListener("click", () => {
+    var provider = new firebase.auth.GoogleAuthProvider();
 
-// When the window is fully loaded, call this function.
-// Note: because we are attaching an event listener to a particular HTML element
-// in this function, we can't do that until the HTML element in question has
+               
+    // using the object we will authenticate the user.
+    firebase.auth().signInWithPopup(provider);});
+};
+</script><script>firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    location.replace("https://blogy-skill-cloud.web.app/home.html")
+  } else {
+    // No user is signed in.
+  }
+});
+</script><script>function user() {
+    let email = document.querySelector('#email').value;
+  let password = document.querySelector('#password').value;
+  
 
-// will run when the submit button is clicked.
+   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorMessage);
+        // ...
+    });
+    firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    location.replace("https://blogy-skill-cloud.web.app/home.html")
+  } else {
+    // No user is signed in.
+  }
+});
+}
 
-  // Find the HTML element with the id recommendationForm, and when the submit
-  // event is triggered on that element, call submitRecommendation.
 
- 
-
-</script>
+      //location.replace("https://blogy-skill-cloud.web.app/home.html")</script>
 </body>
 </html>
