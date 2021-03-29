@@ -5,7 +5,6 @@
 <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="style.css">
- <script src = "main.js"></script>
 </head>
 <body>
 <!-- <div class="container" id="container">
@@ -33,7 +32,7 @@
 			</div>
 			<input id = "email" type="email" placeholder="Email" required/>
 			<input id = "password" type="password" placeholder="Password" required/>
-			<a href="#" class="forgot">Forgot your password?</a>
+			<a href="forgotpassword.htm" class="forgot">Forgot your password?</a>
 			<button class="in">Sign In</button>
 		</form>
 	</div>
@@ -51,16 +50,16 @@
 			</div> -->
 		</div>
 	</div>
-</div><script>
+</div><button onclick = "auth()" class = "google">sign in with Google</button><script>
 var firebaseConfig = {
-    apiKey: "AIzaSyAfkmPXlhUVM_vORak76psZ2S-OM5niJ2E",
-    authDomain: "trap-joker.firebaseapp.com",
-    databaseURL: "https://trap-joker-default-rtdb.firebaseio.com",
-    projectId: "trap-joker",
-    storageBucket: "trap-joker.appspot.com",
-    messagingSenderId: "363198825874",
-    appId: "1:363198825874:web:c41c0c624817021096ed4b",
-    measurementId: "G-M4ST54S84C"
+    apiKey: "AIzaSyCyo1XnrTLb0rTziCn8JGacC9KUJwnCVPk",
+    authDomain: "blogy-skill-cloud.firebaseapp.com",
+    databaseURL: "https://blogy-skill-cloud-default-rtdb.firebaseio.com",
+    projectId: "blogy-skill-cloud",
+    storageBucket: "blogy-skill-cloud.appspot.com",
+    messagingSenderId: "1051285052721",
+    appId: "1:1051285052721:web:b6388cc0823dd5ff49a410",
+    measurementId: "G-G88YG8WXE0"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
@@ -88,5 +87,34 @@ BtnEle.addEventListener("click", () => {
   });
 });
 </script>
+<script>
+ let  click = document.querySelector(".google");
+     function auth() {      
+     // Google provider object is created here.
+     click.addEventListener("click", () => {
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+               
+    // using the object we will authenticate the user.
+    firebase.auth().signInWithPopup(provider);});
+};
+</script><script>firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    location.replace("https://blogy-skill-cloud.web.app/home.html")
+  } else {
+    // No user is signed in.
+  }
+});
+</script><script>
+    let email = document.querySelector('#email').value;
+  let password = document.querySelector('#password').value;
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorMessage);
+        // ...
+    });</script>
 </body>
 </html>
