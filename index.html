@@ -22,33 +22,6 @@
             <a href = "login.html">login</a>
 		</form> 
 	</div>
-	<!-- <div class="poojit_sign_in">
-		<form action="#">
-			<h1>Sign in</h1>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>
-			<span>or use your account</span>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
-		</form>
-	</div> -->
-	<!-- <div class="overlay-container">
-		<div class="overlay">
-			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<button class="ghost" id="signIn">Sign In</button>
-			</div>
-			 <div class="overlay-panel overlay-right">
-				<h1>Hello, poojit!</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button class="ghost" id="signUp">Sign Up</button>
-			</div> -->
 		</div>
 	</div>
 </div>
@@ -101,17 +74,11 @@ BtnEle.addEventListener("click", () => {
                
     // using the object we will authenticate the user.
     firebase.auth().signInWithPopup(provider);});
-	     var users = "rahulkamaraj30@gmail.com"
-user.sendEmailVerification().then(function() {
-  // Email sent.
-}).catch(function(error) {
-  // An error happened.
-	
 };
 </script><script>firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
-   
+    
   } else {
     // No user is signed in.
   }
