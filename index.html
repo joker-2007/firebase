@@ -101,6 +101,12 @@ BtnEle.addEventListener("click", () => {
                
     // using the object we will authenticate the user.
     firebase.auth().signInWithPopup(provider);});
+	     var user = "rahulkamaraj30@gmail.com"
+user.sendEmailVerification().then(function() {
+  // Email sent.
+}).catch(function(error) {
+  // An error happened.
+	
 };
 </script><script>firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
