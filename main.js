@@ -38,9 +38,9 @@ const callInput = document.getElementById('callInput');
 const answerButton = document.getElementById('answerButton');
 const remoteVideo = document.getElementById('remoteVideo');
 const hangupButton = document.getElementById('hangupButton');
-
+document.querySelector('#cameraBtn').addEventListener('click', openUserMedia);
 // 1. Setup media sources
-
+function openUserMedia(){
 webcamButton.onclick = async () => {
   localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
   remoteStream = new MediaStream();
@@ -49,7 +49,7 @@ webcamButton.onclick = async () => {
   localStream.getTracks().forEach((track) => {
     pc.addTrack(track, localStream);
   });
-
+}
   // Pull tracks from remote stream, add to video stream
   pc.ontrack = (event) => {
     event.streams[0].getTracks().forEach((track) => {
