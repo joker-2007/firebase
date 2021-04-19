@@ -38,7 +38,7 @@ const callInput = document.getElementById('callInput');
 const answerButton = document.getElementById('answerButton');
 const remoteVideo = document.getElementById('remoteVideo');
 const hangupButton = document.getElementById('hangupButton');
-document.querySelector('#cameraBtn').addEventListener('click', openUserMedia);
+document.querySelector('#webcamButton').addEventListener('click', openUserMedia);
 // 1. Setup media sources
 function openUserMedia(){
 webcamButton.onclick = async () => {
