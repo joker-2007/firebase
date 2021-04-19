@@ -71,7 +71,7 @@ webcamButton.onclick = async () => {
 
   callButton.disabled = false;
   answerButton.disabled = false;
-  webcamButton.disabled = true;
+  webcamButton.disabled = false;
 };
 
 // 2. Create an offer
