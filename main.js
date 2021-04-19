@@ -48,6 +48,9 @@ const hangupButton = document.getElementById('hangupButton');
 webcamButton.onclick = async () => {
   localStream = navigator.mediaDevices.getUserMedia({audio:true, video:true})
   remoteStream = new MediaStream();
+  
+  webcamVideo.srcObject = localStream;
+  remoteVideo.srcObject = remoteStream
 
   // Push tracks from local stream to peer connection
   localStream.getTracks().forEach((track) => {
@@ -63,6 +66,8 @@ webcamButton.onclick = async () => {
 
   webcamVideo.srcObject = localStream;
   remoteVideo.srcObject = remoteStream;
+
+
 
   callButton.disabled = false;
   answerButton.disabled = false;
